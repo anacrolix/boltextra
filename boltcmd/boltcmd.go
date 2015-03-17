@@ -7,7 +7,7 @@ import (
 	"os"
 	"time"
 
-	"bitbucket.org/anacrolix/webtorrent/boltutil"
+	"github.com/anacrolix/boltextra/boltutil"
 
 	"github.com/boltdb/bolt"
 )
