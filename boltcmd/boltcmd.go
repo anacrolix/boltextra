@@ -14,6 +14,20 @@ import (
 
 var db *bolt.DB
 
+func init() {
+	// This is a quick hack for now.
+	flag.Usage = func() {
+		fmt.Fprintf(os.Stderr, "usage: %s [repo options] repo command [command-args...]\n", os.Args[0])
+		fmt.Fprintf(os.Stderr, "\nRepo options:\n")
+		flag.PrintDefaults()
+		fmt.Fprintf(os.Stderr, "\nCommands:\n")
+		for _, cmd := range []string{"keys", "buckets", "get", "put"} {
+			fmt.Fprintf(os.Stderr, "  %s\n", cmd)
+		}
+		fmt.Fprintf(os.Stderr, "\n")
+	}
+}
+
 func main() {
 	create := flag.Bool("c", false, "create db file if it doesn't exist")
 	flag.Parse()
